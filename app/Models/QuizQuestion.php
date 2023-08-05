@@ -10,4 +10,9 @@ class QuizQuestion extends Model
     use HasFactory;
 
     protected $table = 'quiz_questions';
+
+    public function answers()
+    {
+        return $this->hasMany(QuizAnswer::class, 'question_id', 'id');
+    }
 }

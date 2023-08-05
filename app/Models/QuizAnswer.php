@@ -9,10 +9,10 @@ class QuizAnswer extends Model
 {
     use HasFactory;
 
-    protected $table = 'quiz_answers';
+    protected $table = 'quiz_answer';
 
     public function question()
     {
-        return $this->belongsTo(TestQuestion::class, 'question_id', 'id');
+        return $this->belongsTo(QuizQuestion::class, 'question_id', 'id');
     }
 }

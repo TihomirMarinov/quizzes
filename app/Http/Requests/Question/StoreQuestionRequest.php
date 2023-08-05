@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Rent;
+namespace App\Http\Requests\Question;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateRentRequest extends FormRequest
+class StoreQuestionRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -14,9 +14,10 @@ class UpdateRentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'price' => 'required|between:0,99999.99',
-            'start' => 'required|date',
-            'end' => 'required|date|after:start',
+            'question' => 'required|string|max:255',
+            'answers' => 'array',
+            'answers.*.answer' => 'required|nullable|string|max:255',
+            'answers.*.is_correct' => 'required|boolean',
         ];
     }
 }

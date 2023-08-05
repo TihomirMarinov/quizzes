@@ -53,25 +53,20 @@
                 }
             }
         },
-        "/rents": {
+        "/quizs/results": {
             "get": {
                 "tags": [
-                    "Rents"
+                    "Quizs"
                 ],
-                "summary": "Get Rents",
-                "operationId": "096ae36013b75a24ef9cfe1d30b39d51",
+                "summary": "Get Quizs results",
+                "operationId": "c65dfc50ccc66286ed8bc48848530839",
                 "responses": {
                     "200": {
                         "description": "Successful operation",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "properties": {
-                                        "data": {
-                                            "$ref": "#/components/schemas/Rent"
-                                        }
-                                    },
-                                    "type": "object"
+                                    "$ref": "#/components/schemas/IndexQuiz"
                                 }
                             }
                         }
@@ -82,16 +77,6 @@
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/DefaultUnauthorized"
-                                }
-                            }
-                        }
-                    },
-                    "403": {
-                        "description": "Forbidden",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/DefaultForbidden"
                                 }
                             }
                         }
@@ -112,103 +97,22 @@
                         "bearerAuth": []
                     }
                 ]
-            },
-            "post": {
-                "tags": [
-                    "Rents"
-                ],
-                "summary": "Create Rent",
-                "operationId": "72a1085a812bd47c24d06d0a93d3fe8e",
-                "requestBody": {
-                    "required": false,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/InputRent"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "Successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "data": {
-                                            "$ref": "#/components/schemas/Rent"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/DefaultUnauthorized"
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "Not Found",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/DefaultMessage"
-                                }
-                            }
-                        }
-                    },
-                    "403": {
-                        "description": "Forbidden",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/DefaultForbidden"
-                                }
-                            }
-                        }
-                    }
-                }
             }
         },
-        "/rents/{id}": {
+        "/quizs/questions": {
             "get": {
                 "tags": [
-                    "Rents"
+                    "Quizs"
                 ],
-                "summary": "Get Rent by ID",
-                "operationId": "a8bdb9c90f20cff2d50111ec420526cf",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "ID",
-                        "required": true,
-                        "schema": {
-                            "type": "integer",
-                            "minimum": 1
-                        }
-                    }
-                ],
+                "summary": "Get Quizs qestions",
+                "operationId": "f9274e7b255e2c78022a3d14252ec422",
                 "responses": {
                     "200": {
                         "description": "Successful operation",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "properties": {
-                                        "data": {
-                                            "$ref": "#/components/schemas/Rent"
-                                        }
-                                    },
-                                    "type": "object"
+                                    "$ref": "#/components/schemas/IndexQuiz"
                                 }
                             }
                         }
@@ -219,16 +123,6 @@
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/DefaultUnauthorized"
-                                }
-                            }
-                        }
-                    },
-                    "403": {
-                        "description": "Forbidden",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/DefaultForbidden"
                                 }
                             }
                         }
@@ -252,28 +146,16 @@
             },
             "post": {
                 "tags": [
-                    "Rents"
+                    "Quizs"
                 ],
-                "summary": "Update Rent",
-                "operationId": "d8e80e44918fee01220c807364b80258",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "ID",
-                        "required": true,
-                        "schema": {
-                            "type": "integer",
-                            "minimum": 1
-                        }
-                    }
-                ],
+                "summary": "Create question",
+                "operationId": "aa695754c93d3627b15a615b77407e13",
                 "requestBody": {
                     "required": false,
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/InputRent"
+                                "$ref": "#/components/schemas/InputQuiz"
                             }
                         }
                     }
@@ -286,7 +168,146 @@
                                 "schema": {
                                     "properties": {
                                         "data": {
-                                            "$ref": "#/components/schemas/Rent"
+                                            "$ref": "#/components/schemas/IndexQuiz"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DefaultUnauthorized"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DefaultMessage"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DefaultForbidden"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/quizs/questions/{id}": {
+            "get": {
+                "tags": [
+                    "Quizs"
+                ],
+                "summary": "Get Quizs qestion by ID",
+                "operationId": "1d67e83e62e89b3de495d1f333ba8852",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Question ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "minimum": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IndexQuiz"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DefaultUnauthorized"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DefaultMessage"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Quizs"
+                ],
+                "summary": "Update question by ID",
+                "operationId": "0238b45bf738f4f773fb66691eac8d19",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Question ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "minimum": 1
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/InputQuiz"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/IndexQuiz"
                                         }
                                     },
                                     "type": "object"
@@ -333,10 +354,10 @@
             },
             "delete": {
                 "tags": [
-                    "Rents"
+                    "Tests"
                 ],
-                "summary": "Delete a rent category",
-                "operationId": "3beb5e76c7d194272220c622cec6926b",
+                "summary": "Delete a question",
+                "operationId": "a4bdd007ca70ce7c8d6152af0e3b6d6b",
                 "parameters": [
                     {
                         "name": "id",
@@ -493,40 +514,40 @@
                 },
                 "type": "object"
             },
-            "InputRent": {
-                "required": [
-                    "price",
-                    "start",
-                    "end"
-                ],
+            "IndexQuiz": {
                 "properties": {
-                    "price": {
-                        "description": "between: 0 and 99999.99",
-                        "type": "number"
+                    "id": {
+                        "type": "integer"
                     },
-                    "start": {
-                        "description": "Stat date. ISO-8601 in UTC string",
+                    "name": {
                         "type": "string"
                     },
-                    "end": {
-                        "description": "End date. ISO-8601 in UTC string",
+                    "last_name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "score": {
+                        "type": "integer"
+                    },
+                    "wrong": {
+                        "type": "integer"
+                    },
+                    "date": {
                         "type": "string"
                     }
                 },
                 "type": "object"
             },
-            "Rent": {
+            "InputQuiz": {
+                "required": [
+                    "question"
+                ],
                 "properties": {
-                    "id": {
-                        "type": "integer"
-                    },
-                    "start": {
-                        "description": "Stat date. ISO-8601 in UTC string",
-                        "type": "string"
-                    },
-                    "end": {
-                        "description": "End date. ISO-8601 in UTC string",
-                        "type": "string"
+                    "question": {
+                        "type": "string",
+                        "maxLength": 255
                     }
                 },
                 "type": "object"
@@ -571,10 +592,6 @@
         {
             "name": "Auth",
             "description": "Authentication"
-        },
-        {
-            "name": "Rents",
-            "description": "Rents based routes"
         }
     ]
 }

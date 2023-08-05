@@ -19,16 +19,18 @@ Route::group(['prefix' => 'auth', 'as' => 'auth.'], function() {
     Route::post('/logout', 'AuthController@logout')->middleware(['auth:api'])->name('logout');
 });
 
-Route::group(['prefix' => 'rents', 'as' => 'rent.'], function() {
-    Route::get('/', 'RentController@index')->name('index');
+Route::group(['prefix' => 'quizs', 'as' => 'quiz.'], function() {
+    Route::get('/questions', 'QuizQuestionController@index')->name('index.questions');
 });
 
 Route::group(['middleware' => ['auth:api']], function() {
-    // Rents endpoints
-    Route::group(['prefix' => 'rents', 'as' => 'rent.'], function() {
-        Route::get('/{id}', 'RentController@show')->name('show');
-        Route::post('/', 'RentController@store')->name('store');
-        Route::post('/{id}', 'RentController@update')->name('update');
-        Route::delete('/{id}', 'RentController@destroy')->name('destroy');
+    // Quizs endpoints
+
+    Route::group(['prefix' => 'quizs', 'as' => 'quiz.'], function() {
+        Route::get('/results', 'QuizController@index')->name('index.results');
+        Route::get('/questions/{id}', 'QuizQuestionController@show')->name('show.questions');
+        Route::post('/questions', 'QuizQuestionController@store')->name('store.questions');
+        Route::post('/questions/{id}', 'QuizQuestionController@update')->name('update.questions');
+        Route::delete('/questions/{id}', 'QuizQuestionController@destroy')->name('destroy');
     });
 });
