@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('question', 255);
             $table->enum('status', ['active', 'inactive']);
-            $table->unsignedInteger('created_by');
+            $table->unsignedInteger('created_by')->nullable()->default(0);
             $table->dateTime('created_at');
-            $table->unsignedInteger('updated_by');
+            $table->unsignedInteger('updated_by')->nullable()->default(0);
             $table->dateTime('updated_at');
         });
     }

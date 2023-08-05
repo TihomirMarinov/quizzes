@@ -21,6 +21,8 @@ Route::group(['prefix' => 'auth', 'as' => 'auth.'], function() {
 
 Route::group(['prefix' => 'quizs', 'as' => 'quiz.'], function() {
     Route::get('/questions', 'QuizQuestionController@index')->name('index.questions');
+    Route::post('/start', 'QuizController@start')->name('start');
+    Route::post('/finish/{id}', 'QuizController@finish')->name('finish');
 });
 
 Route::group(['middleware' => ['auth:api']], function() {

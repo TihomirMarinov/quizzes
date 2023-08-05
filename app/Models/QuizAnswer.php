@@ -9,7 +9,7 @@ class QuizAnswer extends Model
 {
     use HasFactory;
 
-    protected $table = 'quiz_answer';
+    protected $table = 'quiz_answers';
 
     public function question()
     {

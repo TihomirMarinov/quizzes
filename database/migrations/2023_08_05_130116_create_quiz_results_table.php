@@ -17,11 +17,11 @@ return new class extends Migration
             $table->string('last_name', 255);
             $table->string('email', 255);
             $table->unsignedTinyInteger('score');
-            $table->unsignedTinyInteger('wrong_awnsers');
+            $table->unsignedTinyInteger('wrong_answers');
             $table->dateTime('expired_at');
-            $table->unsignedInteger('created_by');
+            $table->unsignedInteger('created_by')->nullable()->default(0);
             $table->dateTime('created_at');
-            $table->unsignedInteger('updated_by');
+            $table->unsignedInteger('updated_by')->nullable()->default(0);
             $table->dateTime('updated_at');
         });
     }

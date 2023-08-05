@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('quiz_answer', function (Blueprint $table) {
+        Schema::create('quiz_answers', function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger('question_id');
             $table->string('answer', 255);
             $table->unsignedTinyInteger('is_true');
             $table->enum('status', ['active', 'inactive']);
-            $table->unsignedInteger('created_by');
+            $table->unsignedInteger('created_by')->nullable()->default(0);
             $table->dateTime('created_at');
-            $table->unsignedInteger('updated_by');
+            $table->unsignedInteger('updated_by')->nullable()->default(0);
             $table->dateTime('updated_at');
         });
     }
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('quiz_answer');
+        Schema::dropIfExists('quiz_answers');
     }
 };
