@@ -28,9 +28,11 @@ Route::group(['middleware' => ['auth:api']], function() {
 
     Route::group(['prefix' => 'quizs', 'as' => 'quiz.'], function() {
         Route::get('/results', 'QuizController@index')->name('index.results');
+        Route::get('/results/{id}', 'QuizController@show')->name('show.results');
         Route::get('/questions/{id}', 'QuizQuestionController@show')->name('show.questions');
         Route::post('/questions', 'QuizQuestionController@store')->name('store.questions');
         Route::post('/questions/{id}', 'QuizQuestionController@update')->name('update.questions');
         Route::delete('/questions/{id}', 'QuizQuestionController@destroy')->name('destroy');
+        Route::delete('/results/{id}', 'QuizController@destroy')->name('destroy.results');
     });
 });

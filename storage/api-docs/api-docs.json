@@ -66,7 +66,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/IndexQuiz"
+                                    "$ref": "#/components/schemas/IndexQuizResult"
                                 }
                             }
                         }
@@ -77,6 +77,123 @@
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/DefaultUnauthorized"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DefaultMessage"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/quizs/results/{id}": {
+            "get": {
+                "tags": [
+                    "Quizs"
+                ],
+                "summary": "Get Quizs result by ID",
+                "operationId": "da076543d7ff712aca71cf8b148d951e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Question ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "minimum": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IndexQuizResult"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DefaultUnauthorized"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DefaultMessage"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Quizs"
+                ],
+                "summary": "Delete a result",
+                "operationId": "74bf813c1b907e80265bc08dc78165f1",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "minimum": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DefaultBadRequest"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DefaultForbidden"
                                 }
                             }
                         }
@@ -137,12 +254,7 @@
                             }
                         }
                     }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
+                }
             },
             "post": {
                 "tags": [
@@ -354,7 +466,7 @@
             },
             "delete": {
                 "tags": [
-                    "Tests"
+                    "Quizs"
                 ],
                 "summary": "Delete a question",
                 "operationId": "a4bdd007ca70ce7c8d6152af0e3b6d6b",
@@ -515,6 +627,32 @@
                 "type": "object"
             },
             "IndexQuiz": {
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "last_name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "score": {
+                        "type": "integer"
+                    },
+                    "wrong": {
+                        "type": "integer"
+                    },
+                    "date": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "IndexQuizResult": {
                 "properties": {
                     "id": {
                         "type": "integer"

@@ -15,7 +15,6 @@ class QuizQuestionController extends Controller
      * @OA\Get(
      *     path="/quizs/questions",
      *     tags={"Quizs"},
-     *     security={{"bearerAuth": {}}},
      *     summary="Get Quizs qestions",
      *     @OA\Response(
      *         response=200,
@@ -202,7 +201,7 @@ class QuizQuestionController extends Controller
     /**
      * @OA\Delete(
      *     path="/quizs/questions/{id}",
-     *     tags={"Tests"},
+     *     tags={"Quizs"},
      *     summary="Delete a question",
      *     security={{"bearerAuth": {}}},
      *     @OA\Parameter(
