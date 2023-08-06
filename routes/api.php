@@ -23,6 +23,7 @@ Route::group(['prefix' => 'quizs', 'as' => 'quiz.'], function() {
     Route::get('/questions', 'QuizQuestionController@index')->name('index.questions');
     Route::post('/start', 'QuizController@start')->name('start');
     Route::post('/finish/{id}', 'QuizController@finish')->name('finish');
+    Route::get('/results/{id}', 'QuizController@show')->name('show.results');
 });
 
 Route::group(['middleware' => ['auth:api']], function() {
@@ -30,7 +31,6 @@ Route::group(['middleware' => ['auth:api']], function() {
 
     Route::group(['prefix' => 'quizs', 'as' => 'quiz.'], function() {
         Route::get('/results', 'QuizController@index')->name('index.results');
-        Route::get('/results/{id}', 'QuizController@show')->name('show.results');
         Route::get('/questions/{id}', 'QuizQuestionController@show')->name('show.questions');
         Route::post('/questions', 'QuizQuestionController@store')->name('store.questions');
         Route::post('/questions/{id}', 'QuizQuestionController@update')->name('update.questions');
